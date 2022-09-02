@@ -29,10 +29,7 @@ const data = [
   {
     id: 4,
     name: "Buttercup",
-    bio: `Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum,
-            minima voluptates libero cumque rerum consequatur optio aliquid sint
-            eum maxime illo laborum omnis quo ab rem cupiditate nulla
-            perspiciatis ipsum!`,
+    bio: `Why do you build me up Buttercup, baby, just to let me down and mess me around?`,
     isGoodDog: false,
     image: "https://curriculum-content.s3.amazonaws.com/js/woof-woof/dog_4.jpg"
   },
@@ -49,10 +46,7 @@ const data = [
   {
     id: 6,
     name: "Snooper Pooper",
-    bio: `Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum,
-            minima voluptates libero cumque rerum consequatur optio aliquid sint
-            eum maxime illo laborum omnis quo ab rem cupiditate nulla
-            perspiciatis ipsum!`,
+    bio: `Tonight the Snooper Pooper lights are gonna find me, shining like the sun (Snoop-p-per Poop-p-per), smiling, having fun (Snoop-p-per Poop-p-per). Feeling like a number one!`,
     isGoodDog: false,
     image: "https://curriculum-content.s3.amazonaws.com/js/woof-woof/dog_6.jpg"
   },
