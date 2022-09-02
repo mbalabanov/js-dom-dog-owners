@@ -12,7 +12,7 @@ const data = [
   {
     id: 2,
     name: "Nugget",
-    bio: `I like piña coladas and gettin' caught in the rain. I'm not into yoga and makin' love at midnight in the dunes on the cape.`,
+    bio: `I like piña coladas and gettin' caught in the rain. I'm not into yoga but really into makin' love at midnight in the dunes on the cape.`,
     isGoodDog: false,
     image: "https://curriculum-content.s3.amazonaws.com/js/woof-woof/dog_2.jpg"
   },

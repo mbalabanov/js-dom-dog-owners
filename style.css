@@ -67,6 +67,10 @@ img {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
+.main__dog-section h2 {
+  text-align: center;
+}
+
 .form {
   display: grid;
 }

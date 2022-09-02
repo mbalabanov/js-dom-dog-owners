@@ -1,5 +1,7 @@
 # Dog Owners
 
+My solution can be found here on my personal webspace: https://ptstest.com/dog-owners/ (I'm done with both parts of the exercise and the extension, though I might still refactor the repetitive code.)
+
 In this exercise we practice using events and forms. This is a combo that you will find all the time when writing front-end applications. Your end result should be similar to below:
 
 ![Result](dog_owner.gif)
