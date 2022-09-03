@@ -130,10 +130,6 @@ function addEventListenerToNaughtyButtonOfThisCard(dogId) {
   document.getElementById(NAUGHTY_BUTTON_ID).addEventListener("click", function () {
     changeIsGoodStatus(dogId, NAUGHTY_BUTTON_ID)
     replaceCard(dogId)
-
-    // The function calls itself because the button with the original
-    // eventListener was removed when changing the isGood status on click
-    addEventListenerToNaughtyButtonOfThisCard(dogId)
   });
 
 }
@@ -159,6 +155,8 @@ function changeIsGoodStatus(dogCardId, buttonID) {
 
   ALL_DOG_CARDS[dogCardId].appendChild(generateNaughtyLabel(currentIsGoodStatus))
   ALL_DOG_CARDS[dogCardId].appendChild(generateNaughtyButton(dogCardId, currentIsGoodStatus))
+
+  addEventListenerToNaughtyButtonOfThisCard(dogCardId)
 }
 
 function naughtyStatus(booleanStatus) {
@@ -303,11 +301,21 @@ function processFormInputs() {
   const DOG_BIO_VALUE = document.querySelector('#bio').value
 
   if (DOG_NAME_VALUE.length < 2) {
+    
     document.getElementById('formErrorName').innerText = 'The entered dog name is either empty or too short'
+    
+    setTimeout(function () {
+      document.getElementById('formErrorName').innerText = ''
+    }, 5000)
+
     return
   }
   if (DOG_IMAGE_VALUE.length < 5) {
     document.getElementById('formErrorImage').innerText = 'This does not look like it is long enough for a valid URL'
+    setTimeout(function () {
+      document.getElementById('formErrorImage').innerText = ''
+    }, 5000)
+    
     return
   }
 
