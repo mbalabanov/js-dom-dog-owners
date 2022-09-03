@@ -29,7 +29,7 @@ const data = [
   {
     id: 4,
     name: "Buttercup",
-    bio: `Why do you build me up Buttercup, baby, just to let me down and mess me around?`,
+    bio: `Why do you build me up Buttercup, baby, just to let me down?`,
     isGoodDog: false,
     image: "https://curriculum-content.s3.amazonaws.com/js/woof-woof/dog_4.jpg"
   },
