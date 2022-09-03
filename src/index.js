@@ -7,13 +7,13 @@ setUpApp()
 
 function setUpApp() {
   for (const DOG of data) {
-    generateMenu(DOG.id, DOG.name, 'append')
+    generateMenuItem(DOG.id, DOG.name, 'append')
     ALL_DOG_CARDS[DOG.id] = generateDogCard(DOG.id, DOG.name, DOG.image, DOG.bio, DOG.isGoodDog)
   }
   addEventlistenersToAddDogButton()
 }
 
-function generateMenu(dogId, dogName, prependOrAppend) {
+function generateMenuItem(dogId, dogName, prependOrAppend) {
   const MENU_ITEM = document.createElement('li')
   MENU_ITEM.setAttribute('id', dogId)
   MENU_ITEM.setAttribute('class', 'dogs-list__button')
@@ -299,9 +299,7 @@ function processFormInputs() {
   const DOG_BIO_VALUE = document.querySelector('#bio').value
 
   if (DOG_NAME_VALUE.length < 2) {
-    
     document.getElementById('formErrorName').innerText = 'The entered dog name is either empty or too short'
-    
     setTimeout(function () {
       document.getElementById('formErrorName').innerText = ''
     }, 5000)
@@ -321,7 +319,7 @@ function processFormInputs() {
 
   ALL_DOG_CARDS[NEW_DOG_ID] = generateDogCard(NEW_DOG_ID, DOG_NAME_VALUE, DOG_IMAGE_VALUE, DOG_BIO_VALUE, 'true')
   
-  generateMenu(NEW_DOG_ID, DOG_NAME_VALUE, 'prepend')
+  generateMenuItem(NEW_DOG_ID, DOG_NAME_VALUE, 'prepend')
   replaceCard(NEW_DOG_ID)
   addEventListenerToNaughtyButtonOfThisCard(NEW_DOG_ID)
 }
