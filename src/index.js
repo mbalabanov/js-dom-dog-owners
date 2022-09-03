@@ -18,7 +18,6 @@ function generateMenu(dogId, dogName, prependOrAppend) {
   MENU_ITEM.setAttribute('id', dogId)
   MENU_ITEM.setAttribute('class', 'dogs-list__button')
   MENU_ITEM.innerText = dogName
-  DOGS_MENU.appendChild(MENU_ITEM)
 
   if ( prependOrAppend === 'append' ) {
     DOGS_MENU.appendChild(MENU_ITEM)
