@@ -3,7 +3,9 @@ const DOGS_MENU = document.querySelector('.dogs-list')
 const MAIN_SECTION = document.querySelector('main')
 const ADD_DOG_BUTTON = document.querySelector('.dogs-list__button--add')
 
-function setUp() {
+setUpApp()
+
+function setUpApp() {
   for (const DOG of data) {
     generateMenu(DOG.id, DOG.name, 'append')
     ALL_DOG_CARDS[DOG.id] = generateDogCard(DOG.id, DOG.name, DOG.image, DOG.bio, DOG.isGoodDog)
@@ -173,9 +175,6 @@ function naughtyButtonStatus(booleanStatus) {
   return 'Naughty Dog!'
 }
 
-setUp()
-
-// Form Section
 function generateForm() {
   const FORM_SECTION = document.createElement('section')
   FORM_SECTION.setAttribute('class', 'main__dog-section')
