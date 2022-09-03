@@ -6,15 +6,14 @@ const ADD_DOG_BUTTON = document.querySelector('.dogs-list__button--add')
 function setUp() {
   for (const DOG of data) {
     generateMenu(DOG.id, DOG.name, 'append')
-    ALL_DOG_CARDS[`dogId#${DOG.id}`] = generateDogCard(DOG.id, DOG.name, DOG.image, DOG.bio, DOG.isGoodDog)
+    ALL_DOG_CARDS[DOG.id] = generateDogCard(DOG.id, DOG.name, DOG.image, DOG.bio, DOG.isGoodDog)
   }
   addEventlistenersToAddDogButton()
 }
 
 function generateMenu(dogId, dogName, prependOrAppend) {
   const MENU_ITEM = document.createElement('li')
-  const DOG_ID = `dogId#${dogId}`
-  MENU_ITEM.setAttribute('id', DOG_ID)
+  MENU_ITEM.setAttribute('id', dogId)
   MENU_ITEM.setAttribute('class', 'dogs-list__button')
   MENU_ITEM.innerText = dogName
   DOGS_MENU.appendChild(MENU_ITEM)
@@ -25,11 +24,11 @@ function generateMenu(dogId, dogName, prependOrAppend) {
     ADD_DOG_BUTTON.after(MENU_ITEM, '')
   }
 
-  addEventlistenersToMenuItem(`dogId#${dogId}`)
+  addEventlistenersToMenuItem(dogId)
 }
 
-function addEventlistenersToMenuItem(dogMenuId) {
-  document.getElementById(dogMenuId).addEventListener("click", function () {
+function addEventlistenersToMenuItem(dogId) {
+  document.getElementById(dogId).addEventListener("click", function () {
     replaceCard(this.id)
     addEventListenerToNaughtyButtonOfThisCard(this.id)
   });
@@ -125,18 +124,16 @@ function generateNaughtyButton(dogId, isGoodDog) {
   return NAUGHTY_BUTTON
 }
 
-function addEventListenerToNaughtyButtonOfThisCard(dogCardId) {
-  const SPLIT_ID = dogCardId.split("#");
-  const PURE_ID = SPLIT_ID[1]
-  const CONSTRUCTED_BUTTON_ID = 'naughtyButtonId#' + PURE_ID
+function addEventListenerToNaughtyButtonOfThisCard(dogId) {
+  const NAUGHTY_BUTTON_ID = `naughtyButtonId#${dogId}`
 
-  document.getElementById(CONSTRUCTED_BUTTON_ID).addEventListener("click", function () {
-    changeIsGoodStatus(dogCardId, CONSTRUCTED_BUTTON_ID, PURE_ID)
-    replaceCard(dogCardId)
+  document.getElementById(NAUGHTY_BUTTON_ID).addEventListener("click", function () {
+    changeIsGoodStatus(dogId, NAUGHTY_BUTTON_ID)
+    replaceCard(dogId)
 
     // The function calls itself because the button with the original
     // eventListener was removed when changing the isGood status on click
-    addEventListenerToNaughtyButtonOfThisCard(dogCardId)
+    addEventListenerToNaughtyButtonOfThisCard(dogId)
   });
 
 }
@@ -148,7 +145,7 @@ function addEventListenerToFormSubmitButton() {
   })
 }
 
-function changeIsGoodStatus(dogCardId, buttonID, pureID) {
+function changeIsGoodStatus(dogCardId, buttonID) {
   let currentIsGoodStatus = document.getElementById(buttonID).getAttribute('data-isgood')
 
   if (currentIsGoodStatus == 'true') {
@@ -161,7 +158,7 @@ function changeIsGoodStatus(dogCardId, buttonID, pureID) {
   ALL_DOG_CARDS[dogCardId].querySelector('button').remove()
 
   ALL_DOG_CARDS[dogCardId].appendChild(generateNaughtyLabel(currentIsGoodStatus))
-  ALL_DOG_CARDS[dogCardId].appendChild(generateNaughtyButton(pureID, currentIsGoodStatus))
+  ALL_DOG_CARDS[dogCardId].appendChild(generateNaughtyButton(dogCardId, currentIsGoodStatus))
 }
 
 function naughtyStatus(booleanStatus) {
@@ -315,11 +312,10 @@ function processFormInputs() {
   }
 
   const NEW_DOG_ID = Object.keys(ALL_DOG_CARDS).length + 1
-  const PREPENDED_NEW_DOG_ID = 'dogId#' + NEW_DOG_ID
 
-  ALL_DOG_CARDS[PREPENDED_NEW_DOG_ID] = generateDogCard(NEW_DOG_ID, DOG_NAME_VALUE, DOG_IMAGE_VALUE, DOG_BIO_VALUE, 'true')
+  ALL_DOG_CARDS[NEW_DOG_ID] = generateDogCard(NEW_DOG_ID, DOG_NAME_VALUE, DOG_IMAGE_VALUE, DOG_BIO_VALUE, 'true')
   
   generateMenu(NEW_DOG_ID, DOG_NAME_VALUE, 'prepend')
-  replaceCard(PREPENDED_NEW_DOG_ID)
-  addEventListenerToNaughtyButtonOfThisCard(PREPENDED_NEW_DOG_ID)
+  replaceCard(NEW_DOG_ID)
+  addEventListenerToNaughtyButtonOfThisCard(NEW_DOG_ID)
 }
